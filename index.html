@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text Input and Display</title>
+  </head>
+  <body>
+    <h1>Text Input and Display</h1>
+    <form>
+      <label for="textInput">Enter some text:</label>
+      <input type="text" id="textInput" name="textInput">
+      <br><br>
+      <input type="button" value="Display Text">
+      <br><br>
+      <div id="displayArea"></div>
+    </form>
+    <script>
+      const input = document.querySelector("input[type='text']");
+      const button = document.querySelector("input[type='button']");
+      const display = document.querySelector("#displayArea");
+
+      button.addEventListener("click", function() {
+        display.innerHTML = input.value;
+      });
+    </script>
+  </body>
+</html>
