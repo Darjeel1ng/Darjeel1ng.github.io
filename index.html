@@ -1,35 +1,74 @@
-<div id="app">
-  <div class="content">
-    <h1>{{ title }}</h1>
-    <button @click="start">start</button>
-  </div>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Material Design示例</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/vuetify@2.6.3/dist/vuetify.min.css">
+  </head>
+  <body>
+    <div id="app">
+      <v-app>
+        <v-content>
+          <v-container fluid>
+            <v-row align="center" justify="center">
+              <v-col cols="12" sm="8" md="6">
+                <v-card>
+                  <v-card-title class="text-center">{{ title }}</v-card-title>
+                  <v-card-actions class="justify-center">
+                    <v-btn color="primary" @click="start">开始</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-content>
+      </v-app>
+    </div>
 
-<style>
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.19"></script>
+    <script src="https://unpkg.com/vue-router@4.0.11/dist/vue-router.min.js"></script>
+    <script src="https://unpkg.com/vuetify@2.6.3/dist/vuetify.min.js"></script>
+    <script>
+      // 定义Vue实例
+      const app = Vue.createApp({
+        data() {
+          return {
+            title: '欢迎来到我的网页',
+          }
+        },
 
-h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 2rem;
-}
+        methods: {
+          start() {
+            router.push('/newpage')
+          }
+        }
+      }).use(Vuetify)
 
-button {
-  font-size: 1.5rem;
-  padding: 1rem 2rem;
-  background-color: #4285f4;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-</style>
+      // 定义Vuetify实例
+      const vuetify = new Vuetify({
+        theme: {
+          themes: {
+            light: {
+              primary: '#2196F3',
+            },
+          },
+        },
+      })
 
+      // 定义路由和页面组件
+      const router = VueRouter.createRouter({
+        routes: [
+          {
+            path: '/newpage',
+            component: {
+              template: '<div>这是一个新页面</div>'
+            }
+          }
+        ]
+      })
 
+      // 结合Vue实例和Vue Router实例
+      app.use(router).use(vuetify).mount('#app')
+    </script>
+  </body>
+</html>
