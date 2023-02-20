@@ -1,74 +1,69 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Material Design示例</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://unpkg.com/vuetify@2.6.3/dist/vuetify.min.css">
+    <title>Exquisite Corpse</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      #container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .card {
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 32px;
+        text-align: center;
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0 0 16px;
+      }
+
+      .button {
+        background-color: #2196F3;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 12px 32px;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .button:hover {
+        background-color: #0D47A1;
+      }
+    </style>
   </head>
   <body>
-    <div id="app">
-      <v-app>
-        <v-content>
-          <v-container fluid>
-            <v-row align="center" justify="center">
-              <v-col cols="12" sm="8" md="6">
-                <v-card>
-                  <v-card-title class="text-center">{{ title }}</v-card-title>
-                  <v-card-actions class="justify-center">
-                    <v-btn color="primary" @click="start">开始</v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-content>
-      </v-app>
+    <div id="container">
+      <div class="card">
+        <div class="title">Exquisite Corpse</div>
+        <button class="button" onclick="start()">Start</button>
+      </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.19"></script>
-    <script src="https://unpkg.com/vue-router@4.0.11/dist/vue-router.min.js"></script>
-    <script src="https://unpkg.com/vuetify@2.6.3/dist/vuetify.min.js"></script>
     <script>
-      // 定义Vue实例
-      const app = Vue.createApp({
-        data() {
-          return {
-            title: '欢迎来到我的网页',
-          }
-        },
-
-        methods: {
-          start() {
-            router.push('/newpage')
-          }
-        }
-      }).use(Vuetify)
-
-      // 定义Vuetify实例
-      const vuetify = new Vuetify({
-        theme: {
-          themes: {
-            light: {
-              primary: '#2196F3',
-            },
-          },
-        },
-      })
-
-      // 定义路由和页面组件
-      const router = VueRouter.createRouter({
-        routes: [
-          {
-            path: '/newpage',
-            component: {
-              template: '<div>这是一个新页面</div>'
-            }
-          }
-        ]
-      })
-
-      // 结合Vue实例和Vue Router实例
-      app.use(router).use(vuetify).mount('#app')
+      function start() {
+        window.location.href = 'newpage.html'
+      }
     </script>
   </body>
 </html>
