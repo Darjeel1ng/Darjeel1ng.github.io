@@ -61,9 +61,10 @@
     </div>
 
     <script>
-      function start() {
-        window.location.href = 'newpage.html'
-      }
+      const startButton = document.getElementById('start-button')
+      startButton.addEventListener('click', () => {
+        window.location.href = 'lobby.html'
+      })
     </script>
   </body>
 </html>
