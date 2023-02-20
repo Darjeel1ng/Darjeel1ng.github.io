@@ -1,33 +1,35 @@
 <div id="app">
-  <h1>{{ title }}</h1>
-  <button @click="start">开始</button>
+  <div class="content">
+    <h1>{{ title }}</h1>
+    <button @click="start">start</button>
+  </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="https://unpkg.com/vue-router@4.0.11/dist/vue-router.min.js"></script>
-<script>
-const app = Vue.createApp({
-  data() {
-    return {
-      title: 'Exquisite corpse',
-    }
-  },
+<style>
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 
-  methods: {
-    start() {
-      router.push('/newpage')
-    }
-  }
-})
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
-const router = VueRouter.createRouter({
-  routes: [
-    {
-      path: '/newpage',
-      component: {
-        template: '<div>这是一个新页面</div>'
-      }
-    }
-  ]
-})
+button {
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+</style>
+
 
