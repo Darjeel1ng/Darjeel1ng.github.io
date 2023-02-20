@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>corpse</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="left-column">
+        <h2 class="title">All Players</h2>
+        <ul class="player-list"></ul>
+      </div>
+      <div class="right-column">
+        <h2 class="title">Exquisite Corpse</h2>
+        <form class="form" onsubmit="return false">
+          <div class="input-group">
+            <label class="input-label" for="story-input">Please enter the text:</label>
+            <input class="input-field" type="text" id="story-input" required>
+          </div>
+          <button class="button" onclick="addStory()">Submit</button>
+        </form>
+        <div class="story-list"></div>
+      </div>
+    </div>
+
+    <script>
+      const playerList = document.querySelector('.player-list')
+      const storyList = document.querySelector('.story-list')
+      const storyInput = document.querySelector('#story-input')
+      const addButton = document.querySelector('.button')
+
+      let players = JSON.parse(localStorage.getItem('players')) || []
+
+
+      function renderPlayerList() {
+        playerList.innerHTML = ''
+        players.forEach(player => {
+          const playerItem = document.createElement('li')
+          playerItem.className = 'player-item'
+          playerItem.textContent = player
+          playerList.appendChild(playerItem)
+        })
+      }
+
+      renderPlayerList()
+
+      function addStory() {
+        const story = storyInput.value
+        if (story) {
+          const playerIndex = storyList.children.length % players.length
+          const player = players[playerIndex]
+          const storyItem = document.createElement('div')
+          storyItem.className = 'story-item'
+          storyItem.innerHTML = `<strong>${player}: </strong>${story}`
+          storyList.appendChild(storyItem)
+          storyInput.value = ''
+        }
+      }
+
+      addButton.addEventListener('click', addStory)
+
+
+      window.addEventListener('beforeunload', () => {
+        localStorage.setItem('players', JSON.stringify(players))
+      })
+    </script>
+  </body>
+</html>
